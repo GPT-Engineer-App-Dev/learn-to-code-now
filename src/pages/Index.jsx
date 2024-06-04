@@ -1,8 +1,19 @@
-import { Box, Button, Container, Flex, Heading, HStack, Image, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, HStack, Image, Stack, Text, VStack, FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Index = () => {
+  const handleEnrollment = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      course: formData.get("course"),
+    };
+    console.log("Enrollment Data:", data);
+  };
+
   return (
     <Container maxW="container.xl" p={0}>
       {/* Navigation Bar */}
@@ -83,6 +94,38 @@ const Index = () => {
               <Text mb={4}>Course description goes here. Master coding with our expert-led courses.</Text>
               <Button colorScheme="blue">Learn More</Button>
             </Box>
+          </Box>
+        </Flex>
+      </Box>
+
+      {/* Course Enrollment Section */}
+      <Box as="section" py={20} px={8} bg="gray.50">
+        <Heading as="h2" size="xl" textAlign="center" mb={10}>
+          Enroll in a Course
+        </Heading>
+        <Flex justify="center">
+          <Box maxW="md" w="full" p={8} borderWidth="1px" borderRadius="lg" bg="white">
+            <VStack spacing={4} as="form" onSubmit={handleEnrollment}>
+              <FormControl id="name" isRequired>
+                <FormLabel>Name</FormLabel>
+                <Input type="text" placeholder="Your Name" />
+              </FormControl>
+              <FormControl id="email" isRequired>
+                <FormLabel>Email</FormLabel>
+                <Input type="email" placeholder="Your Email" />
+              </FormControl>
+              <FormControl id="course" isRequired>
+                <FormLabel>Course</FormLabel>
+                <Select placeholder="Select course">
+                  <option value="course1">Course Title 1</option>
+                  <option value="course2">Course Title 2</option>
+                  <option value="course3">Course Title 3</option>
+                </Select>
+              </FormControl>
+              <Button colorScheme="blue" type="submit" w="full">
+                Enroll Now
+              </Button>
+            </VStack>
           </Box>
         </Flex>
       </Box>
