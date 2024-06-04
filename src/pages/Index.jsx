@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <Container maxW="container.xl" p={0}>
       {/* Navigation Bar */}
-      <Flex as="nav" bg="blue.600" color="white" p={4} justifyContent="space-between" alignItems="center">
+      <Flex as="nav" bg="red.600" color="white" p={4} justifyContent="space-between" alignItems="center">
         <Heading size="md">CodeLearn</Heading>
         <HStack spacing={8}>
           <Link to="/">Home</Link>
